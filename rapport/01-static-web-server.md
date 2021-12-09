@@ -1,4 +1,3 @@
-# 01. Serveur HTTP statique
 ## Objectifs
 - Build et run un Docker avec un serveur web statique avec un peu de contenu
 - Avoir quelques pages web statiques un peu jolies et fonctionnelles
