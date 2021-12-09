@@ -1,6 +1,3 @@
-# TODOs
-- Créer du contenu sympa statique avec une template graphique et 1-2 fonctionnalités :)
-
 # 01. Serveur HTTP statique
 ## Objectifs
 - Build et run un Docker avec un serveur web statique avec un peu de contenu
