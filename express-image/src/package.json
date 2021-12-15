@@ -9,6 +9,7 @@
   "author": "Géraud Silvestri",
   "license": "ISC",
   "dependencies": {
-    "chance": "^1.1.8"
+    "chance": "^1.1.8",
+    "express": "^4.17.1"
   }
 }
