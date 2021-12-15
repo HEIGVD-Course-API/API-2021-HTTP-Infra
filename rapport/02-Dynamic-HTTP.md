@@ -12,6 +12,12 @@
 - Doc
 
 ## Objectifs
+- HTTP app that returns random HTTP content as JSON payload
+- Use Postman to test the app
+
+Content-Type: application/json; charset=utf-8
+Random JSON content
+
 - Image docker avec ce qu'il faut
   - C'est à dire ?
 - demo build run et show web interface

@@ -1,1 +1,1 @@
-# mrdaves24/04-02-dynamic-web
+docker-compose up --no-start --build
