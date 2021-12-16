@@ -1,21 +1,12 @@
-# Vidéos
-- https://www.youtube.com/watch?v=fSIrZ0Mmpis
-- https://www.youtube.com/watch?v=o4qHbf_vMu0
+# 02 - Web dynamique
+## Objectifs
+- Utiliser une technologie de web dynamique (express.js ou autre)
+- Créer une page web dynamique qui sert un JSON avec des données
+- Tester le fonctionnement de la page avec postman
 
-# TODOs
-- Définir exactement ce qu'il faut faire (Vidéos ?...)
-- Docker
-  - Dockerfile
-  - build.sh
-  - run.sh
-- Contenu dynamique
-- Doc
+## Résumé
+Ayant de l'expérience en PHP, j'ai choisi d'utiliser cette techonologie afin de créer un JSON aléatoire contenant des informations météorologique (humidité, température et pression). L'API retourne un nombre aléatoire d'entrée (entre 30 et 50) ou alors le nombre exact donné par le paramètre GET nommé "nb".  
+Différents tests sont disponible avec Postman. La collection est donnée en JSON dans le dossier. Les tests vérifient notamment que les objets ont les bons membres, que c'est bien du JSON et que le paramètre "nb" est correctement validé.
 
-## Objectifs
-- Image docker avec ce qu'il faut
-  - C'est à dire ?
-- demo build run et show web interface
-- Generatre random dynamic content and return as JSON
-- You cannot return the same content as the webcast (you cannot return a list of people).
-- Express.js is opt, other frameworks OK
-- Doc of what I did here
+## Docker
+Pour cette partie, j'ai utilisé un docker-compose avec les images nginx et PHP 8.1 fpm. Différents volumes sont mappés directement avec le host.

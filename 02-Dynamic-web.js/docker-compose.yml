@@ -1,0 +1,16 @@
+version: "3.3"
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./content:/usr/share/nginx/html   # Pages web servies
+      - ./config:/etc/nginx/conf.d        # Configuration de nginx
+      - ./logs:/var/log/nginx             # Logs
+
+  php:
+    image: php:8.1-fpm
+    volumes:
+      - ./content:/usr/share/nginx/html   # Pages web servies, nécessaire pour pouvoir les exécuter
