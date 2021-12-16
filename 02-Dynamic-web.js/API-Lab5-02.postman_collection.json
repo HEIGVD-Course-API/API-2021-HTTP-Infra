@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "37253cc4-0924-460f-81c9-06e1ef173cbd",
+		"name": "API-Lab5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Normal behavior",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Should return 200\", function() {",
+							"    // Normal request",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Should be json\", function() {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Objects should have certain members\", function() {",
+							"    if (!('température' in pm.response.json()[0]))",
+							"        pm.expect.fail(\"température not found in object\");",
+							"    if (!('humidité' in pm.response.json()[0]))",
+							"        pm.expect.fail(\"humidité not found in object\");",
+							"    if (!('pression' in pm.response.json()[0]))",
+							"        pm.expect.fail(\"pression not found in object\");",
+							"    if (Object.keys(pm.response.json()[0]).length != 3) ",
+							"        pm.expect.fail(\"Objects should have 3 members\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Normal behavior with count",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Normal behavior with nb\", function() {",
+							"    // Normal request with ?nb=2",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Should be json\", function() {",
+							"    pm.response.to.be.json;",
+							"});",
+							"",
+							"pm.test(\"Item count should be 2\", function() {",
+							"    pm.expect(pm.response.json().length).to.eql(2);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "http://localhost?nb=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"query": [
+						{
+							"key": "nb",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR - Negative parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Negative count should 400\", function() {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Should be json\", function() {",
+							"    pm.response.to.be.json;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost?nb=-2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"query": [
+						{
+							"key": "nb",
+							"value": "-2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ERROR - Not Numeric parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Not numeric parameter should 400\", function() {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							"pm.test(\"Should be json\", function() {",
+							"    pm.response.to.be.json;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost?nb=Invalid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"query": [
+						{
+							"key": "nb",
+							"value": "Invalid"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
