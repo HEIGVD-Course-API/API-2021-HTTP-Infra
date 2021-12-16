@@ -1,16 +1,31 @@
 version: "3.3"
 
 services:
-  web:
+  static:
     image: nginx:latest
-    ports:
-      - "80:80"
     volumes:
-      - ./content:/usr/share/nginx/html   # Pages web servies
-      - ./config:/etc/nginx/conf.d        # Configuration de nginx
-      - ./logs:/var/log/nginx             # Logs
+      - ./content/static:/usr/share/nginx/html
+      - ./config/static.conf:/etc/nginx/conf.d/default.conf
+      - ./logs/static:/var/log/nginx
+    container_name: API-static-web
+
+  dynamic:
+    image: nginx:latest
+    volumes:
+      - ./content/dynamic:/usr/share/nginx/html
+      - ./config/dynamic.conf:/etc/nginx/conf.d/default.conf
+      - ./logs/dynamic:/var/log/nginx
+    container_name: API-dynamic-web
 
   php:
     image: php:8.1-fpm
     volumes:
-      - ./content:/usr/share/nginx/html   # Pages web servies, nécessaire pour pouvoir les exécuter
+      - ./content/dynamic:/usr/share/nginx/html
+
+  reverse:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/reverse.conf:/etc/nginx/conf.d/default.conf
+      - ./logs/reverse:/var/log/nginx
